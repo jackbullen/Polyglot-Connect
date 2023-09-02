@@ -11,8 +11,9 @@ app.get('/', (req, res) => {
 
 const mongoUser = process.env.MONGODB_USER;
 const mongoPassword = process.env.MONGODB_PASSWORD;
+const mongoDb = process.env.MONGODB_NAME
 
-mongoose.connect(`mongodb+srv://${mongoUser}:${mongoPassword}@connect.mhqru.mongodb.net/?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://${mongoUser}:${mongoPassword}@${mongoDb}.mongodb.net/?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

@@ -13,7 +13,7 @@ exports.registerUser = async (req, res) => {
 
         await user.save();
 
-        const secretKey = 'ABC123'; 
+        const secretKey = process.env.SECRET_KEY; 
         const token = jwt.sign({ id: user._id }, secretKey, { expiresIn: '1h' });
     
         res.json({ token, userId: user._id });
@@ -39,7 +39,7 @@ exports.loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Incorrect email or password' });
         }
 
-        const secretKey = 'ABC123'; 
+        const secretKey = process.env.SECRET_KEY; 
         const token = jwt.sign({ id: user._id }, secretKey, { expiresIn: '1h' });
 
         res.json({ token, userId: user._id });

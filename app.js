@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
 const mongoUser = process.env.MONGODB_USER;
 const mongoPassword = process.env.MONGODB_PASSWORD;
-const mongoDb = process.env.MONGODB_NAME
+const mongoDb = process.env.MONGODB_NAME;
 
 mongoose.connect(`mongodb+srv://${mongoUser}:${mongoPassword}@${mongoDb}.mongodb.net/?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
@@ -37,12 +37,16 @@ const userRoutes = require('./routes/userRoutes');
 const sessionRoutes = require('./routes/sessionRoutes');
 const matchRoutes = require('./routes/matchRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const languageRoutes = require('./routes/languageRoutes');
+const resourceRoutes = require('./routes/resourceRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes); 
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/matches', matchRoutes); 
 app.use('/api/messaging', messageRoutes);
+app.use('/api/languages', languageRoutes);
+app.use('/api/resources', resourceRoutes);
 
 const PORT = process.env.PORT || 3000;
 

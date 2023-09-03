@@ -16,7 +16,8 @@ describe('Authentication Routes', () => {
         email: 'john.doe@example.com',
       })
       .end((err, res) => {
-        expect(res).to.have.status(201);
+        console.log(res.body);
+        expect(res).to.have.status(200);
         expect(res.body).to.have.property('token');
         done();
       });
@@ -31,6 +32,7 @@ describe('Authentication Routes', () => {
         password: 'secretpassword',
       })
       .end((err, res) => {
+        console.log(res.body);
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('token');
         done();

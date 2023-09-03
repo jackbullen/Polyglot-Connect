@@ -28,7 +28,14 @@ exports.loginUser = async (req, res) => {
         const {email, password} = req.body;
 
         const user = await User.findOne({email});
-        if (!user || !user.verifyPassword(password)) {
+
+        if (!user) {
+            return res.status(401).json({ message: 'Incorrect email' });
+        }
+
+        const isPasswordValid = await user.verifyPassword(password);
+
+        if (!isPasswordValid) {
             return res.status(401).json({ message: 'Incorrect email or password' });
         }
 

@@ -5,7 +5,7 @@ exports.createResource = async (req, res) => {
         const { name, url, languageId } = req.body;
         const resource = new Resource({ name, url, language: languageId });
         const savedResource = await resource.save();
-        res.status(200).json(savedResource);
+        res.status(201).json(savedResource);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

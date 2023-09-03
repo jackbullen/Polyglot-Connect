@@ -15,7 +15,7 @@ describe('User Routes', () => {
       .post('/api/auth/login')
       .send({
         email: 'john.doe@example.com',
-        passwordHash: 'secretpassword',
+        password: 'secretpassword',
       })
       .end((err, res) => {
         authToken = res.body.token;

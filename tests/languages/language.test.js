@@ -35,7 +35,7 @@ describe('Language and Resource Routes', () => {
       })
       .end((err, res) => {
         console.log(res.body);
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(201);
         expect(res.body).to.have.property('_id');
         expect(res.body.name).to.equal('Spanish Tutorial');
         resourceId = res.body._id;
